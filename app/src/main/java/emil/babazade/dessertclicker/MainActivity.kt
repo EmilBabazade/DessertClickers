@@ -72,12 +72,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        savedInstanceState?.apply {
-            revenue = getInt(KEY_REVENUE, 0)
-            dessertsSold = getInt(KEY_DESSERT_SOLD, 0)
-            dessertTimer.secondsCount = getInt(KEY_TIMER_SECONDS, 0)
-        }
-
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -86,6 +80,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         dessertTimer = DessertTimer(this.lifecycle)
+
+        savedInstanceState?.apply {
+            revenue = getInt(KEY_REVENUE, 0)
+            dessertsSold = getInt(KEY_DESSERT_SOLD, 0)
+            dessertTimer.secondsCount = getInt(KEY_TIMER_SECONDS, 0)
+        }
 
         // Set the TextViews to the right values
         binding.revenue = revenue
